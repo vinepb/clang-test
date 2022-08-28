@@ -6,11 +6,18 @@
 
 #include "../include/mul.h"
 
-/* A test case that does nothing and succeeds. */
-static void null_test_success(void **state) { (void)state; /* unused */ }
+static void mul_float_test(void **state) {
+    assert_float_equal(6.0, mul_float(2.0, 3.0), 0.1);
+}
+
+static void mul_int_test(void **state) {
+    assert_int_equal(6, mul_int(2, 3));
+}
+
 int main(void) {
-  const struct CMUnitTest tests[] = {
-      cmocka_unit_test(null_test_success),
-  };
-  return cmocka_run_group_tests(tests, NULL, NULL);
+    const struct CMUnitTest tests[] = {
+        cmocka_unit_test(mul_float_test),
+        cmocka_unit_test(mul_int_test),
+    };
+    return cmocka_run_group_tests(tests, NULL, NULL);
 }
