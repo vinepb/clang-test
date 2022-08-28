@@ -14,6 +14,8 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
+    - name: install dependencies
+      run: sudo apt-get install libcmocka0 libcmocka-dev
     - name: build tests
       run: make test
     - name: run tests
